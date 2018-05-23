@@ -25,6 +25,8 @@ $(document).ready(function(){
             $(this).scrollTop($(this)[0].scrollHeight);
 });
     })
+
+
     $('#send_button').on('click',function(){
         chat_socket.emit('chat_message',$('#send_message').val());
         $('#send_message').val('');

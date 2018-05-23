@@ -29,6 +29,10 @@ def receive_message_from_user(message):
     print(request.sid)
     print('USER MESSAGE: {}'.format(message))
     emit('from flask', message.upper(),broadcast=True)
+########################################################
+#Company_Profile
+########################################################
+
 
 ########################################################
 #Chat

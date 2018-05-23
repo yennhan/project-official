@@ -28,14 +28,15 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Bracket Responsive Bootstrap 4 Admin Template</title>
+    <title>Company Profile Page</title>
 
     <!-- vendor css -->
     <link href="static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="static/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="static/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="static/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
-
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="static/css/bracket.css">
   </head>
@@ -81,11 +82,8 @@
 
       </div>
 
-
           <!-- br-sideleft-menu -->
-
       <label class="sidebar-label pd-x-15 mg-t-25 mg-b-20 tx-info op-9">Information Summary</label>
-
       <div class="info-list">
         <div class="d-flex align-items-center justify-content-between pd-x-15">
           <div>
@@ -709,11 +707,10 @@
           <div class="card-profile-img">
             <img src="http://via.placeholder.com/280x280" alt="">
           </div><!-- card-profile-img -->
-          <h4 class="tx-normal tx-roboto tx-white">Katherine M. Pechon</h4>
-          <p class="mg-b-25">Wine Connoisseur</p>
-
-          <p class="wd-md-500 mg-md-l-auto mg-md-r-auto mg-b-25">Singer, Lawyer, Achiever, Wearer of unrelated hats, Data Visualizer, Mayonaise Tester. I don't know what alt-tab does. Storyteller.</p>
-
+          <h4 class="tx-normal tx-roboto tx-white" id='the_company_name'>Petronas Berhad</h4>
+          <p class="mg-b-10">Oil & Gas Industry</p>
+          <button class="btn btn-warning mg-b-10">Connect</button>
+          <p class="wd-md-500 mg-md-l-auto mg-md-r-auto mg-b-25">Oil & Petroleum</p>
           <p class="mg-b-0 tx-24">
             <a href="" class="tx-white-8 mg-r-5"><i class="fa fa-facebook-official"></i></a>
             <a href="" class="tx-white-8 mg-r-5"><i class="fa fa-twitter"></i></a>
@@ -728,7 +725,7 @@
           <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#posts" role="tab">Posts</a></li>
           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#photos" role="tab">Photos</a></li>
           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#" role="tab">Favorites</a></li>
-          <li class="nav-item hidden-xs-down"><a class="nav-link" data-toggle="tab" href="#" role="tab">Settings</a></li>
+          <li class="nav-item hidden-xs-down"><a class="nav-link" data-toggle="tab" href="#setting" role="tab">Settings</a></li>
         </ul>
       </div>
 
@@ -832,21 +829,21 @@
                 <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-13 mg-b-25">Contact Information</h6>
 
                 <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Phone Number</label>
-                <p class="tx-info mg-b-25">+1 234 567 8910</p>
+                <p class="tx-info mg-b-25" >+1 234 567 8910</p>
 
                 <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Email Address</label>
-                <p class="tx-inverse mg-b-25">katherine.pechon@themepixels.me</p>
+                <p class="tx-inverse mg-b-25" >katherine.pechon@themepixels.me</p>
 
                 <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Home Address</label>
-                <p class="tx-inverse mg-b-25">1352 Science Center Drive Terreton, ID 83450 </p>
+                <p class="tx-inverse mg-b-25" >1352 Science Center Drive Terreton, ID 83450 </p>
 
                 <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Office Address</label>
                 <p class="tx-inverse mg-b-50">1352 Science Center Drive Terreton, ID 83450 </p>
 
                 <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-13 mg-b-25">Other Information</h6>
 
-                <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Degree</label>
-                <p class="tx-inverse mg-b-25">Bachelor of Science in Computer Science</p>
+                <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Specializes In</label>
+                <p class="tx-inverse mg-b-25" >Valves and Multiple Divisions</p>
 
                 <label class="tx-10 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-5">Skills</label>
                 <ul class="list-unstyled profile-skills">
@@ -1007,11 +1004,27 @@
             </div><!-- col-lg-4 -->
           </div><!-- row -->
         </div><!-- tab-pane -->
+          <div class="tab-pane fade" id="setting">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card pd-20 pd-xs-30 shadow-base bd-0 mg-t-30">
+                <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-14 mg-b-30">Recent Photos</h6>
+
+
+
+                <p class="mg-t-20 mg-b-0">Loading more photos...</p>
+
+              </div><!-- card -->
+            </div><!-- col-lg-8 -->
+
+
+        </div><!-- tab-pane -->
       </div><!-- br-pagebody -->
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script src="static/jquery/jquery.js"></script>
     <script src="static/js/popper.js"></script>
     <script src="static/js/bootstrap/bootstrap.js"></script>
@@ -1020,7 +1033,8 @@
     <script src="static/jquery-ui/jquery-ui.js"></script>
     <script src="static/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="static/peity/jquery.peity.js"></script>
-
+    <script src="static/js/company_profile.js"></script>
     <script src="static/js/bracket.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
   </body>
 </html>

@@ -2,10 +2,10 @@ from flask import *
 from . import dash
 from flask_login import current_user,login_required
 import boto3
+from boto3.dynamodb.types import TypeDeserializer
+# login to AWS
 
 dynamodb = boto3.resource('dynamodb', region_name="ap-southeast-1")
-
-
 
 @dash.route('/search',methods=['GET','POST'])
 @login_required

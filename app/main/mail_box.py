@@ -9,7 +9,6 @@ from flask_login import UserMixin, login_user,login_required,logout_user,current
 from main1 import login_manager
 
 
-
 dynamodb = boto3.resource('dynamodb', region_name="ap-southeast-1")
 
 
