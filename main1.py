@@ -13,7 +13,6 @@ login_manager.init_app(app)
 login_manager.login_view='login'
 dynamodb = boto3.resource('dynamodb', region_name="ap-southeast-1")
 
-
 def authenticated_only(f):
     @functools.wraps(f)
     def wrapped(*args, **kwargs):
