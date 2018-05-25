@@ -63,7 +63,6 @@ def dash_one():
         keys = request.args.get('resulting')
         print(keys)
 
-
     return render_template('dashboard.html', name=name, username=name)
 @dash.route('/search',methods=['GET','POST'])
 @login_required

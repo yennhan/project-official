@@ -28,7 +28,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>One Identity Dashboard</title>
+    <title>netWork</title>
 
      <!-- vendor css -->
      <link href="static/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -561,45 +561,40 @@
         <h4 class="tx-gray-800 mg-b-5">Welcome back, {{ name }}!</h4>
         <p class="mg-b-0"></p>
       </div>
-        <div class="pd-l-100">
-        <div class="mg-b-50 card bg-dark card-body pd-l-80 wd-1000">
+        <div class="pd-l-200">
+        <div class="mg-t-50 mg-b-50 card bg-dark card-body pd-l-40 wd-800">
 <form  method="POST" action="{{ url_for('dash.searching') }}" >
              <div class=" form-inline">
           <input id="searchbox1" name="searchbox" type="text" class=" fa fa-search col-md-10 form-control" placeholder="Search for companies,items,things you need? Or send a enquiry">
            <div class="pd-l-0"></div> <button class="btn btn-primary pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Search</button>
              </div>
 </form></div></div>
-      <div class="br-pagebody">
+      <div class="br-pagebody">Results
           <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
-<div class="table-wrapper">
+<div class="mg-r-120 pd-r-200">
 
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable2" class="table display responsive nowrap">
               <thead>
-                <tr>
-                  <th class="wd-15p">Company Name</th>
-                  <th class="wd-15p">Company Industry</th>
+                <tr class="bg-info">
+                    <th class="wd-10p "><div class="tx-white">Company Name</div></th>
+                  <!--<th class="wd-15p">Company Industry</th>
                   <th class="wd-20p">Company Type</th>
                   <th class="wd-15p">Address</th>
-                  <th class="wd-10p">Listed Sales</th>
-
+                  <th class="wd-10p">Listed Sales</th>-->
                 </tr>
               </thead>
               <tbody>
-
-                <tr>
-                  <td>Tiger</td>
-                  <td>Nixon</td>
-                  <td>System Architect</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-
+                <tr class="ht-200">
+                  <td>
+                      <div class=" wd-180">
+                      <img class="pd-r-10 float-left img-thumbnail" src="https://brandongaille.com/wp-content/uploads/2013/07/Adidas-Company-Logo.jpg" alt="camera" >
+                      </div>
+                      <div class=" mg-r-120">
+                      <div class="tx-primary pd-l-200 tx-poppins tx-24 tx-bold">Adidas Sdn Bhd</div>
+                  <div class="pd-l-200 tx-poppins">Descriptions</div></div></td>
                 </tr>
-                <tr>
+                <tr class="ht-200">
                   <td>Cedric</td>
-                  <td>Kelly</td>
-                  <td>Senior Javascript Developer</td>
-                  <td>2012/03/29</td>
-                  <td>$433,060</td>
                 </tr>
               </tbody>
             </table>
