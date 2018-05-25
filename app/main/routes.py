@@ -64,7 +64,7 @@ def login():
                     user=User(email)
                     login_user(user)
 
-                    return redirect(url_for('main.dashboard_login'))
+                    return redirect(url_for('dash.dashboard_login'))
                 else:
                     word="Wrong Password"
                     return render_template('index.html',condition=word)
@@ -117,18 +117,6 @@ def register():
             KeyConditionExpression=Key('company_id').eq(video_id)
         )
 '''
-@main.route('/dashboard_login',methods=['GET','POST'])
-@login_required
-def dashboard_login():
-    user = dynamodb.Table('CRM-user')
-    response = user.get_item(
-        Key={
-            'user_id': current_user.id
-        }
-    )
-    item = response['Item']
-    name=item['name'][0]
-    return render_template('dashboard.html',name=name,username=name)
 
 
 

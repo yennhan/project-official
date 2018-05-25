@@ -38,9 +38,15 @@
     <link href="static/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="static/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
     <link href="static/rickshaw/rickshaw.min.css" rel="stylesheet">
+       <link href="static/highlightjs/github.css" rel="stylesheet">
+       <link href="static/select2/css/select2.min.css" rel="stylesheet">
     <link type="text/css" href="static/chartist/chartist.css" rel="stylesheet">
+        <link href="static/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="static/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+      <link href="static/datatables/jquery.dataTables.css" rel="stylesheet">
  <!--<link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css">-->
     <!-- Bracket CSS -->
+
     <link rel="stylesheet" href="static/css/bracket.css">
   </head>
 
@@ -50,7 +56,7 @@
     <div class="br-sideleft overflow-y-auto">
       <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
       <div class="br-sideleft-menu">
-        <a href="{{ url_for('main.dashboard_login')}}" class="br-menu-link">
+        <a href="{{ url_for('dash.dashboard_login')}}" class="br-menu-link">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
@@ -127,12 +133,7 @@
       <div class="br-header-left">
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
-              <form  method="POST" action="{{ url_for('dash.searching') }}" >
-             <div class=" form-inline">
-          <input id="searchbox1" name="searchbox" type="text" class="col-xs-10 form-control" placeholder="What would you like to buy?">
-            <button class="btn btn-secondary" >Search</button>
-             </div>
-         </form>
+
           <!--<input id="searchbox" type="text" class="form-control" placeholder="What would you like to buy?">
           <span class="input-group-btn">
             <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
@@ -552,7 +553,7 @@
     <div class="br-mainpanel">
       <div class="br-pageheader pd-y-15 pd-l-20">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-          <a class="breadcrumb-item" href="index.html">Bracket</a>
+          <a class="breadcrumb-item" href="index.html">Home</a>
           <span class="breadcrumb-item active">Dashboard</span>
         </nav>
       </div><!-- br-pageheader -->
@@ -560,215 +561,57 @@
         <h4 class="tx-gray-800 mg-b-5">Welcome back, {{ name }}!</h4>
         <p class="mg-b-0"></p>
       </div>
-
+        <div class="pd-l-100">
+        <div class="mg-b-50 card bg-dark card-body pd-l-80 wd-1000">
+<form  method="POST" action="{{ url_for('dash.searching') }}" >
+             <div class=" form-inline">
+          <input id="searchbox1" name="searchbox" type="text" class=" fa fa-search col-md-10 form-control" placeholder="Search for companies,items,things you need? Or send a enquiry">
+           <div class="pd-l-0"></div> <button class="btn btn-primary pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Search</button>
+             </div>
+</form></div></div>
       <div class="br-pagebody">
+          <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
+<div class="table-wrapper">
 
-        <!-- start you own content here -->
+            <table id="datatable1" class="table display responsive nowrap">
+              <thead>
+                <tr>
+                  <th class="wd-15p">Company Name</th>
+                  <th class="wd-15p">Company Industry</th>
+                  <th class="wd-20p">Company Type</th>
+                  <th class="wd-15p">Address</th>
+                  <th class="wd-10p">Listed Sales</th>
 
-        <div class="row row-sm mg-t-20">
-          <div class="col-lg-6">
-            <div class="card shadow-base bd-0">
-              <div class="card-header bg-transparent pd-20">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">Requires Attention</h6>
-              </div><!-- card-header -->
-              <table class="table table-responsive mg-b-0 tx-12">
-                <thead>
-                  <tr class="tx-10">
-                    <th class="wd-10p pd-y-5">&nbsp;</th>
-                    <th class="pd-y-5">User</th>
-                    <th class="pd-y-5">Type</th>
-                    <th class="pd-y-5">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Mark K. Peters</a>
-                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
-                    </td>
-                    <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Email verified
-                    </td>
-                    <td>Just Now</td>
-                  </tr>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Karmen F. Brown</a>
-                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
-                    </td>
-                    <td class="tx-12">
-                      <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Pending verification
-                    </td>
-                    <td>Apr 21, 2017 8:34am</td>
-                  </tr>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Gorgonio Magalpok</a>
-                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
-                    </td>
-                    <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Purchased success
-                    </td>
-                    <td>Apr 10, 2017 4:40pm</td>
-                  </tr>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Ariel T. Hall</a>
-                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
-                    </td>
-                    <td class="tx-12">
-                      <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Payment on hold
-                    </td>
-                    <td>Apr 02, 2017 6:45pm</td>
-                  </tr>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">John L. Goulette</a>
-                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
-                    </td>
-                    <td class="tx-12">
-                      <span class="square-8 bg-pink mg-r-5 rounded-circle"></span> Account deactivated
-                    </td>
-                    <td>Mar 30, 2017 10:30am</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="card-footer tx-12 pd-y-15 bg-transparent">
-                <a href=""><i class="fa fa-angle-down mg-r-5"></i>View All Transaction History</a>
-              </div><!-- card-footer -->
-            </div><!-- card -->
-          </div><!-- col-6 -->
-          <div class="col-lg-6 mg-t-20 mg-lg-t-0">
-            <div class="card shadow-base bd-0">
-              <div class="card-header pd-20 bg-transparent">
+                </tr>
+              </thead>
+              <tbody>
 
-              </div><!-- card-header -->
-              <table class="table table-responsive mg-b-0 tx-12">
-                <thead>
-                  <tr class="tx-10">
-                    <th class="pd-y-5">Company Name</th>
-                    <th class="pd-y-5">Type</th>
-                       <th class="pd-y-5">Bid</th>
-                    <th class="pd-y-5 tx-center">Review</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
+                <tr>
+                  <td>Tiger</td>
+                  <td>Nixon</td>
+                  <td>System Architect</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
 
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">The Dothraki Shoes</a>
-                      <span class="tx-11 d-block"><span class="square-8 bg-danger mg-r-5 rounded-circle"></span> 20 remaining</span>
-                    </td>
-
-                       <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Bidding
-                    </td>
-
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>33.34%</span></td>
-                    <td class="valign-middle tx-center">
-                      <a href="" class="tx-gray-600 tx-24"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Westeros Sneaker</a>
-                      <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> In stock</span>
-                    </td>
-
-                       <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Bidding
-                    </td>
-                    <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>21.20%</span></td>
-                    <td class="valign-middle tx-center">
-                      <a href="" class="tx-gray-600 tx-24"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Selonian Hand Bag</a>
-                      <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> In stock</span>
-                    </td>
-
-                       <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Bidding
-                    </td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>23.34%</span></td>
-                    <td class="valign-middle tx-center">
-                      <a href="" class="tx-gray-600 tx-24"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Kel Dor Sunglass</a>
-                      <span class="tx-11 d-block"><span class="square-8 bg-warning mg-r-5 rounded-circle"></span> 45 remaining</span>
-                    </td>
-
-                       <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Direct Purchase
-                    </td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>28.78%</span></td>
-                    <td class="valign-middle tx-center">
-                      <a href="" class="tx-gray-600 tx-24"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Kubaz Sunglass</a>
-                      <span class="tx-11 d-block"><span class="square-8 bg-success mg-r-5 rounded-circle"></span> In stock</span>
-                    </td>
-
-                       <td class="tx-12">
-                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Direct Purchase
-                    </td>
-                    <td class="valign-middle"><span class="tx-danger"><i class="icon ion-android-arrow-down mg-r-5"></i>18.18%</span></td>
-                    <td class="valign-middle tx-center">
-                      <a href="" class="tx-gray-600 tx-24"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="card-footer tx-12 pd-y-15 bg-transparent">
-                <a href=""><i class="fa fa-angle-down mg-r-5"></i>View All Products</a>
-              </div><!-- card-footer -->
-            </div><!-- card -->
-          </div><!-- col-6 -->
-        </div><!-- row -->
-
+                </tr>
+                <tr>
+                  <td>Cedric</td>
+                  <td>Kelly</td>
+                  <td>Senior Javascript Developer</td>
+                  <td>2012/03/29</td>
+                  <td>$433,060</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- table-wrapper -->
       </div><!-- br-pagebody -->
- <ul id="messaging"><font color="black"></font></ul>
-      <input type="text" id="mymessage">
-     <button id="send">Send</button>
-
-        <input type="text" id="username">
-        <button id="send_username">Send Username</button>
-
-        Send To: <input type="text" id="send_to_username">
-        Message: <input type="text" id="private_message">
-        <button id="send_private_message">Send</button>
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
   <!-- ########## END: MAIN PANEL ########## -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="static/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script src="static/js/popper.js"></script>
     <script src="static/js/bootstrap/bootstrap.js"></script>
@@ -776,16 +619,17 @@
     <script src="static/moment/moment.js"></script>
     <script src="static/jquery-ui/jquery-ui.js"></script>
     <script src="static/jquery-switchbutton/jquery.switchButton.js"></script>
+    <script src="static/select2/js/select2.min.js"></script>
+    <script src="static/datatables/jquery.dataTables.js"></script>
+    <script src="static/datatables-responsive/dataTables.responsive.js"></script>
     <script src="static/peity/jquery.peity.js"></script>
     <script src="static/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
     <script src="static/d3/d3.js"></script>
     <script src="static/rickshaw/rickshaw.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="static/js/bracket.js"></script>
     <script src="static/js/ResizeSensor.js"></script>
-    <!--<script src="static/js/dashboard.js"></script>-->
     <script src="static/js/dashboard_one"></script>
 
   </body>

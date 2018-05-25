@@ -1,3 +1,46 @@
+$(function(){
+        'use strict';
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+      });
+
+// Rangeslider
+        if($().ionRangeSlider) {
+          $('#rangeslider1').ionRangeSlider();
+
+          $('#rangeslider2').ionRangeSlider({
+              min: 100,
+              max: 1000,
+              from: 550
+          });
+
+          $('#rangeslider3').ionRangeSlider({
+              type: 'double',
+              grid: true,
+              min: 0,
+              max: 10000,
+              from: 0,
+              to: 0,
+              prefix: '$'
+          });
+
+        }
+
 $(document).ready(function(){
     var url=('http://' + document.domain + ':' + location.port);
     var socket = io.connect(url+'/chat');

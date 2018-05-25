@@ -30,14 +30,55 @@ es=Elasticsearch(hosts=[{'host': "search-inventory-5ucv2n3ftxe7aqer4hh7gi7pha.ap
     connection_class=RequestsHttpConnection
             )
 #res = es.search(index="crm-company", body={"query": {"match_all": {}}})
-query = es.search(index="crm-company",q='Syarikat ')
-print(query)
 
+
+@dash.route('/dashboard_login',methods=['GET','POST'])
+@login_required
+def dashboard_login():
+    user = dynamodb.Table('CRM-user')
+    response = user.get_item(
+        Key={
+            'user_id': current_user.id
+        }
+    )
+    item = response['Item']
+    name=item['name'][0]
+    return render_template('dashboard.html',name=name,username=name)
+
+@dash.route('/dash_result',methods=['GET','POST'])
+@login_required
+def dash_one():
+    user = dynamodb.Table('CRM-user')
+    response = user.get_item(
+        Key={
+            'user_id': current_user.id
+        }
+    )
+    item = response['Item']
+    name = item['name'][0]
+    key2 = request.args.get('no_res')
+    if key2=="empty":
+        print(key2)
+    else:
+        keys = request.args.get('resulting')
+        print(keys)
+
+
+    return render_template('dashboard.html', name=name, username=name)
 @dash.route('/search',methods=['GET','POST'])
 @login_required
 def searching():
     if request.method == 'POST':
         search_item=request.form.get('searchbox')
         user_id = current_user.id
-        print(search_item,user_id)
-        return redirect(url_for('main.dashboard_login'))
+        #print(search_item)
+        query = es.search(index="crm-company", q=search_item)
+        #print("Got %d Hits:" % query['hits']['total'])
+        #for hit in query['hits']['hits']:
+            #print( hit["_source"])
+        if (query['hits']['total']==0):
+            the_result = "empty"
+        else:
+            the_result="not_empty"
+        the_hit_result=query["hits"]["hits"]
+        return redirect(url_for('dash.dash_one',resulting=[the_hit_result],no_res=the_result))
