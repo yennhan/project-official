@@ -78,7 +78,7 @@ def searching():
 @login_required
 def submit_enquiry():
     if request.method == 'POST':
-        id = request.form.get('company_id')
+        id = request.form.get('company_id_1')
         comments = request.form.get('comment')
         print(id,comments)
         company = dynamodb.Table('CRM-company')

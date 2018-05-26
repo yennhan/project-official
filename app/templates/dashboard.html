@@ -610,11 +610,11 @@
                           </div>
                       </div>
                       <div class="pull-right ">
-                  <a class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12"data-dismiss="modal" data-toggle="modal" data-target="#signup">
+                  <a class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12"data-dismiss="modal" data-toggle="modal" data-target="#{{ company['_source']['company_id'] }}">
                       <font color="white"><u>Send Enquiry</u></font>
                   </a>
               </div>
- <div id="signup" class="modal fade">
+ <div id="{{ company['_source']['company_id'] }}" class="modal fade">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content  rounded ">
                     <div class="modal-body  overflow-auto">
@@ -625,8 +625,8 @@
                     <label for="comment">Specs/Details:</label>
                         <textarea name="comment" class=" form-control" rows="6" cols="60" id="comment" ></textarea>
                 </div>
-                                 <div class="form-group">
-             <input id="comp_id_2" name="company_id" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
+       <div class="form-group">
+             <input id="comp_id_2" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
 </div>
             <div class="form-layout-footer">
                 <button class="btn btn-info" type="submit"><font color="black">Submit</font></button>
