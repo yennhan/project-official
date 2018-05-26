@@ -86,6 +86,7 @@ def register():
         password=request.form.get('password_a')
         hashed_password = generate_password_hash(password,method='sha256')
         multiselect = request.form.getlist('category_tags_value')
+        company_number = request.form.get('company_phone_number')
         user = dynamodb.Table('CRM-user')
         user.put_item(
             Item={
@@ -105,8 +106,8 @@ def register():
                 'company_address':company_address,
                 'company_type':company_type,
                 'company_industry':company_industry,
-                'company_tags':multiselect
-
+                'company_tags':multiselect,
+                'company_number':company_number
             })
     return redirect(url_for('main.index'))
 

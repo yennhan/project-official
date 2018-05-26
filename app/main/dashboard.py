@@ -43,7 +43,7 @@ def dashboard_login():
     )
     item = response['Item']
     name=item['name'][0]
-    return render_template('dashboard.html',name=name,username=name)
+    return render_template('dashboard.html',list_of_search=None,name=name,username=name)
 
 @dash.route('/dash_result',methods=['GET','POST'])
 @login_required
@@ -73,3 +73,19 @@ def searching():
         search_item=request.form.get('searchbox')
         #print("Got %d Hits:" % query['hits']['total'])
         return redirect(url_for('dash.dash_one',q=search_item))
+
+@dash.route('/submit_enquiry',methods=['GET','POST'])
+@login_required
+def submit_enquiry():
+    if request.method == 'POST':
+        id = request.form.get('company_id')
+        comments = request.form.get('comment')
+        print(id,comments)
+        company = dynamodb.Table('CRM-company')
+        response = company.get_item(
+            Key={
+                'company_id': id
+            }
+        )
+        item = response['Item']
+        return render_template('page-profile.html', the_list=item, the_settings="display:none")
