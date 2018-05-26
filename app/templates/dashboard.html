@@ -40,7 +40,8 @@
     <link href="static/rickshaw/rickshaw.min.css" rel="stylesheet">
        <link href="static/highlightjs/github.css" rel="stylesheet">
        <link href="static/select2/css/select2.min.css" rel="stylesheet">
-    <link type="text/css" href="static/chartist/chartist.css" rel="stylesheet">
+    <link href="static/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+      <link type="text/css" href="static/chartist/chartist.css" rel="stylesheet">
         <link href="static/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
     <link href="static/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
       <link href="static/datatables/jquery.dataTables.css" rel="stylesheet">
@@ -572,8 +573,8 @@
       <div class="br-pagebody">Results
           <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
 <div class="mg-r-120 pd-r-200">
-
-            <table id="datatable2" class="table display responsive nowrap">
+              {% if list_of_search is not none %}
+    <table id="datatable2" class="table display responsive nowrap">
               <thead>
                 <tr class="bg-info">
                     <th class="wd-10p "><div class="tx-white">Company Name</div></th>
@@ -584,21 +585,40 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="ht-200">
+                {% for company in list_of_search['hits']['hits'] %}
+                <tr class="ht-200 wd-150">
                   <td>
                       <div class=" wd-180">
-                      <img class="pd-r-10 float-left img-thumbnail" src="https://brandongaille.com/wp-content/uploads/2013/07/Adidas-Company-Logo.jpg" alt="camera" >
+                      <img class="pd-r-10 float-left img-thumbnail" src="http://us.yuneec.com/c.4198727/sca-dev-vinson/img/no_image_available.jpeg" alt="camera" >
+                      <div class="pd-l-10 pd-t-10 pd-r-10 pull-left "><b>Address:</b><p>{{ company['_source']['company_address'] }}</p></div>
                       </div>
-                      <div class=" mg-r-120">
-                      <div class="tx-primary pd-l-200 tx-poppins tx-24 tx-bold">Adidas Sdn Bhd</div>
-                  <div class="pd-l-200 tx-poppins">Descriptions</div></div></td>
+                      <div class=" pd-l-20 mg-r-20">
+                      <div class="tx-primary pd-l-200 tx-poppins tx-24 tx-bold">{{ company['_source']['company_name'] }}
+                      </div>
+                  <div class="pd-l-200 tx-black tx-bold"><u>Descriptions</u></div>
+                          <div class=" pd-b-5 pd-t-5 pd-l-30 wd-500 tx-poppins text-truncate text-left">
+                              {{ company['_source']['description'] }}
+                          </div>
+                          <div class="pd-l-200 pd-b-5 tx-black"><u>Industry:</u></div>
+                          <div class="pd-b-5 pd-l-200">{{ company['_source']['company_industry'] }}</div>
+                           <div class="pd-l-200 pd-b-5 tx-black"><u>Type:</u></div>
+                          <div class="pd-b-5 pd-l-200">{{ company['_source']['company_type'] }}</div>
+                          <div class="pd-l-200 tx-black tx-bold"><u>Items</u></div>
+                          <div class="pd-l-200 col-lg-8 pd-b-10">
+                              <input name="category_tags_value" value="{{ company['_source']['company_tags'] }}" data-role="tagsinput" disabled>
+                          </div>
+                      </div>
+                      <button class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12" >View Profile</button>
+                  </td>
                 </tr>
-                <tr class="ht-200">
-                  <td>Cedric</td>
-                </tr>
-              </tbody>
+              {% endfor %}
+                 </tbody>
             </table>
           </div><!-- table-wrapper -->
+              {% else %}
+          <p>No Result Found, try again</p>
+              {% endif %}
+
       </div><!-- br-pagebody -->
 
     </div><!-- br-mainpanel -->
@@ -621,6 +641,7 @@
     <script src="static/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
     <script src="static/d3/d3.js"></script>
     <script src="static/rickshaw/rickshaw.min.js"></script>
+     <script src="static/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
     <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
     <script src="static/js/bracket.js"></script>

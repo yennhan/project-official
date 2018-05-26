@@ -3,7 +3,7 @@ from . import dash
 from flask_login import current_user,login_required
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import *
-import boto3,requests
+import boto3,requests,pprint
 
 # login to AWS
 session=boto3.Session()
@@ -56,28 +56,20 @@ def dash_one():
     )
     item = response['Item']
     name = item['name'][0]
-    key2 = request.args.get('no_res')
-    if key2=="empty":
-        print(key2)
+    search_item=request.args.get('q')
+    query = es.search(index="crm-company", q=search_item)
+    for hit in query['hits']['hits']:
+        pprint.pprint(hit['_source'])
+    if (query['hits']['total']==0):
+        return render_template('dashboard.html',list_of_search=None, name=name, username=name)
     else:
-        keys = request.args.get('resulting')
-        print(keys)
+        return render_template('dashboard.html', list_of_search=query, name=name, username=name)
 
-    return render_template('dashboard.html', name=name, username=name)
+
 @dash.route('/search',methods=['GET','POST'])
 @login_required
 def searching():
     if request.method == 'POST':
         search_item=request.form.get('searchbox')
-        user_id = current_user.id
-        #print(search_item)
-        query = es.search(index="crm-company", q=search_item)
         #print("Got %d Hits:" % query['hits']['total'])
-        #for hit in query['hits']['hits']:
-            #print( hit["_source"])
-        if (query['hits']['total']==0):
-            the_result = "empty"
-        else:
-            the_result="not_empty"
-        the_hit_result=query["hits"]["hits"]
-        return redirect(url_for('dash.dash_one',resulting=[the_hit_result],no_res=the_result))
+        return redirect(url_for('dash.dash_one',q=search_item))
