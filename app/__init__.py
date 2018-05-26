@@ -17,9 +17,11 @@ def create_app(debug=False):
     from .main import dash as dash_blueprint
     from .main import mailbox as mail_blueprint
     from .main import pro_company as co_prof_blueprint
+    from .main import transacted as trans_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(dash_blueprint)
     app.register_blueprint(mail_blueprint)
     app.register_blueprint(co_prof_blueprint)
+    app.register_blueprint(trans_blueprint)
     socketio.init_app(app)
     return app
