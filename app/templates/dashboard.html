@@ -592,7 +592,7 @@
               </thead>
               <tbody>
                 {% for company in list_of_search['hits']['hits'] %}
-                <tr class="ht-200 wd-150">
+                <tr id="table_form_{{ company['_source']['company_id'] }}" class="ht-200 wd-150">
                   <td>
                       <div class=" wd-180">
                       <img class="pd-r-10 float-left img-thumbnail" src="http://via.placeholder.com/280x280" alt="camera" >
@@ -615,11 +615,11 @@
                           </div>
                       </div>
                       <div class="pull-right ">
-                  <a class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12"data-dismiss="modal" data-toggle="modal" data-target="#{{ company['_source']['company_id'] }}">
+                  <a class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12"data-dismiss="modal" data-toggle="modal" data-target="#modal_form_{{ company['_source']['company_id'] }}">
                       <font color="white"><u>Send Enquiry</u></font>
                   </a>
               </div>
- <div id="{{ company['_source']['company_id'] }}" class="modal fade">
+ <div id="modal_form_{{ company['_source']['company_id'] }}" class="modal fade">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content  rounded ">
                     <div class="modal-body  overflow-auto">
@@ -627,8 +627,8 @@
                              <form id="form_{{ company['_source']['company_id'] }}">
                                  <h3 class="pd-b-20 form-signin-heading"><font color="black"><u>Enquiry Info</u></font> </h3>
                 <div class="pd-b-10 pd-r-20 form-group">
-                    <label for="comment">Specs/Details:</label>
-                        <textarea  name="comment" class=" form-control" rows="6" cols="60" id="comment" ></textarea>
+                    <label for="comment_form_{{ company['_source']['company_id'] }}">Specs/Details:</label>
+                        <textarea  name="comment" class=" form-control" rows="6" cols="60" id="comment_form_{{ company['_source']['company_id'] }}" ></textarea>
                 </div>
        <div class="form-group">
              <input id="company_form_{{ company['_source']['company_id'] }}" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">

@@ -47,14 +47,15 @@ $(document).ready(function(){
         $.ajax({
             data:{
                 id: $("#company_"+$(this).attr('id')).val(),
-                enquiry: $('#comment').val()
+                enquiry: $("#comment_"+$(this).attr('id')).val()
             },
             type : 'POST',
             url  :"/submit_enquiry"
         })
         .done(function(data){
         });
-
+    $("#modal_"+$(this).attr('id')).modal('hide');
+    $("#table_"+$(this).attr('id')).hide();
     });
     });
 
