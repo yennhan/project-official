@@ -614,12 +614,16 @@
                   <div class="modal-content  rounded ">
                     <div class="modal-body  overflow-auto">
                         <div class="form-layout form-layout-1">
-                             <form id="form_{{ company['_source']['company_id'] }}">
+                             <form enctype="multipart/form-data" id="form_{{ company['_source']['company_id'] }}">
                                  <h3 class="pd-b-20 form-signin-heading"><font color="black"><u>Enquiry Info</u></font> </h3>
                 <div class="pd-b-10 pd-r-20 form-group">
                     <label for="comment_form_{{ company['_source']['company_id'] }}">Specs/Details:</label>
                         <textarea  name="comment" class=" form-control" rows="6" cols="60" id="comment_form_{{ company['_source']['company_id'] }}" ></textarea>
                 </div>
+               <span class="control-fileupload">
+                   <label class="pd-r-20 tx-gray-700"><u>Upload Details/Measurements:</u></label>
+          <br/><input name="config_file" type="file" id="file_upload_form_{{ company['_source']['company_id'] }}">
+        </span>
        <div class="form-group">
              <input id="company_form_{{ company['_source']['company_id'] }}" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
 </div>

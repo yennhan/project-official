@@ -40,16 +40,43 @@ $(function(){
           });
 
         }
-
 $(document).ready(function(){
     $("form").submit(function(event){
     var test=$(this).attr('id');
+    var form = document.querySelector("#"+$(this).attr('id'));
+    var formData = new FormData(form);
+    console.log(formData);
+    if (test != 'search_form' && test!="view_profile"){
+        event.preventDefault();
+        $.ajax({
+            enctype: 'multipart/form-data',
+            data: formData,
+            type : 'POST',
+            url  :"/submit_enquiry",
+            contentType: false,
+            cache: false,
+            processData: false,
+            async: false
+        })
+        .done(function(data){
+        });
+    $("#modal_"+$(this).attr('id')).modal('hide');
+    $("#table_"+$(this).attr('id')).hide();
+    }});
+});
+/*
+$(document).ready(function(){
+    $("form").submit(function(event){
+    var test=$(this).attr('id');
+    var filename = $("#file_"+test).val();
     if (test != 'search_form' && test!="view_profile"){
      event.preventDefault();
         $.ajax({
+            enctype: 'multipart/form-data',
             data:{
                 item: $("#company_"+$(this).attr('id')).val(),
-                enquiry: $("#comment_"+$(this).attr('id')).val()
+                enquiry: $("#comment_"+$(this).attr('id')).val(),
+                file : filename
             },
             type : 'POST',
             url  :"/submit_enquiry"
@@ -60,4 +87,4 @@ $(document).ready(function(){
     $("#table_"+$(this).attr('id')).hide();
     }});
 });
-
+*/

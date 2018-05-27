@@ -79,9 +79,17 @@ def searching():
 @dash.route('/submit_enquiry',methods=['GET','POST'])
 @login_required
 def submit_enquiry():
+    print (request.form)
     if request.method == 'POST':
-        id = request.form['item']
-        comments = request.form['enquiry']
+        id = request.form['company_id_1']
+        comments = request.form['comment']
+        try:
+            file = request.files['config_file']
+        except Exception:
+            print(id,comments)
+            pass
+        else:
+            print("There is a file"+str(file))
         user = dynamodb.Table('CRM-user')
         response = user.get_item(
             Key={
