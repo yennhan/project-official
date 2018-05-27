@@ -1,5 +1,6 @@
 from flask import *
 from . import dash
+
 from flask_login import current_user,login_required
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import *
@@ -80,13 +81,23 @@ def submit_enquiry():
     if request.method == 'POST':
         id = request.form['item']
         comments = request.form['enquiry']
-        print(id,comments)
-        print(str(uuid.uuid4()))
-        company = dynamodb.Table('CRM-company')
-        response = company.get_item(
+        user = dynamodb.Table('CRM-user')
+        response = user.get_item(
             Key={
-                'company_id': id
+                'user_id': current_user.id
             }
         )
         item = response['Item']
+        the_company=item['company_id']
+        docs_table=dynamodb.Table('CRM-Docs')
+        docs_table.put_item(
+            Item={
+                'doc_id': str(uuid.uuid4()),
+                'company_id': id,
+                'sender_company_id': the_company,
+                'comments':comments,
+                'requirements':"Initiate For Bidding "
+            }
+        )
+
         return render_template('page-profile.html', the_list=item, the_settings="display:none")

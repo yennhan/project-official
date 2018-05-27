@@ -44,7 +44,7 @@ $(function(){
 $(document).ready(function(){
     $("form").submit(function(event){
     var test=$(this).attr('id');
-    if (test != 'search_form'){
+    if (test != 'search_form' && test!="view_profile"){
      event.preventDefault();
         $.ajax({
             data:{
@@ -57,7 +57,7 @@ $(document).ready(function(){
         .done(function(data){
         });
     $("#modal_"+$(this).attr('id')).modal('hide');
-    //$("#table_"+$(this).attr('id')).hide();
+    $("#table_"+$(this).attr('id')).hide();
     }});
 });
 
