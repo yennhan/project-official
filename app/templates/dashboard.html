@@ -577,7 +577,6 @@
              </div>
 </form></div></div>
       <div class="br-pagebody">Results
-
        {% if list_of_search is not none %}
           <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
 <div class="mg-r-120 pd-r-200">
@@ -625,17 +624,17 @@
                   <div class="modal-content  rounded ">
                     <div class="modal-body  overflow-auto">
                         <div class="form-layout form-layout-1">
-                             <form action = "{{ url_for('dash.submit_enquiry') }}" method = "POST" class="" id="form" data-parsley-validate>
+                             <form id="form_{{ company['_source']['company_id'] }}">
                                  <h3 class="pd-b-20 form-signin-heading"><font color="black"><u>Enquiry Info</u></font> </h3>
                 <div class="pd-b-10 pd-r-20 form-group">
                     <label for="comment">Specs/Details:</label>
-                        <textarea name="comment" class=" form-control" rows="6" cols="60" id="comment" ></textarea>
+                        <textarea  name="comment" class=" form-control" rows="6" cols="60" id="comment" ></textarea>
                 </div>
        <div class="form-group">
-             <input id="comp_id_2" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
+             <input id="company_form_{{ company['_source']['company_id'] }}" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
 </div>
             <div class="form-layout-footer">
-                <button class="btn btn-info" type="submit"><font color="black">Submit</font></button>
+                <button id="submit_query" name="submit_query" class="btn btn-info"  type="submit"><font color="black">Submit</font></button>
                 <button class="btn btn-secondary"type="button" data-dismiss="modal" ><font color="black">Cancel</font></button>
             </div><!-- form-layout-footer -->
           <!-- form-layout -->
@@ -646,7 +645,7 @@
                   </div><!-- col-6 -->
                 </div><!-- row -->
 
- </div><!-- modal-body -->
+ <!-- modal-body -->
     <form  method="POST" action="{{ url_for('pro_company.profile_company') }}" >
                   <input id="comp_id_3" name="company_id" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
                   <button class=" pull-right btn bg-transparent pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12" ><u>View Profile</u></button>
@@ -661,9 +660,7 @@
               {% else %}
           <p>No Result Found, try again</p>
               {% endif %}
-
       </div><!-- br-pagebody -->
-
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
   <!-- ########## END: MAIN PANEL ########## -->

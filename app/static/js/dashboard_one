@@ -42,40 +42,19 @@ $(function(){
         }
 
 $(document).ready(function(){
-    var url=('http://' + document.domain + ':' + location.port);
-    var socket = io.connect(url+'/chat');
-
-    $('#send').on('click',function(){
-        var message = $('#mymessage').val();
-
-        socket.emit('message from user',message)
-    });
-
-
-    socket.on('from flask',function(msg){
-        alert(msg);
-    });
-    socket.on('server originated',function(msg){
-        alert(msg);
-    });
-
-    var private_socket=io.connect(url+'/private')
-
-    $('#send_username').on('click',function(){
-        private_socket.emit('username',$('#username').val())
-    });
-    $('#send_private_message').on('click',function(){
-        var recipient = $('#send_to_username').val();
-        var message_to_send = $('#private_message').val();
-        private_socket.emit('private_message',{'username':recipient,'message':message_to_send});
-    });
-
-    private_socket.on('new_private_message',function(msg){
-        alert(msg);
-        console.log(msg);
-    });
-    socket.on('connect',function(){
-          socket.send('User has connected!');
-            console.log('New notification!');
-          });
+    $("form").submit(function(event){
+     event.preventDefault();
+        $.ajax({
+            data:{
+                id: $("#company_"+$(this).attr('id')).val(),
+                enquiry: $('#comment').val()
+            },
+            type : 'POST',
+            url  :"/submit_enquiry"
+        })
+        .done(function(data){
         });
+
+    });
+    });
+

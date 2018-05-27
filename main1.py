@@ -129,8 +129,6 @@ def send_messages(msg):
             )
 
 
-
-
 @socketio.on('connect')
 def connected():
     the_session()

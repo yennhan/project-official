@@ -26,7 +26,6 @@ $(document).ready(function(){
 });
     })
 
-
     $('#send_button').on('click',function(){
         chat_socket.emit('chat_message',$('#send_message').val());
         $('#send_message').val('');
@@ -43,7 +42,6 @@ $(document).ready(function(){
     });
 
     private_socket.on('new_private_message',function(msg){
-        alert(msg);
         console.log(msg);
     });
     socket.on('connect',function(){

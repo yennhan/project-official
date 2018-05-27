@@ -212,7 +212,7 @@
                         <p class="mg-b-0 tx-medium tx-gray-800 tx-14">Larry Smith</p>
                         <span class="tx-11 tx-gray-500">Yesterday</span>
                       </div><!-- d-flex -->
-                      <p class="tx-12 mg-b-0">When, while the lovely valley teems with vapour around me, and the meridian sun strikes...</p>
+                      <p class="tx-12 mg-b-0">When,  and the meridian sun strikes...</p>
                     </div>
                   </div><!-- media -->
                 </a>
@@ -436,30 +436,7 @@
                 </div>
               </div><!-- d-flex -->
             </a><!-- contact-list-link -->
-            <a href="" class="contact-list-link">
-              <div class="d-flex">
-                <div class="pos-relative">
-                  <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">
-                  <div class="contact-status-indicator bg-gray-500 bd-br-primary"></div>
-                </div>
-                <div class="mg-l-10">
-                  <p class="mg-b-0">Belinda Connor</p>
-                  <span class="tx-12 op-5 d-inline-block">Fort Kent, ME</span>
-                </div>
-              </div><!-- d-flex -->
-            </a><!-- contact-list-link -->
-            <a href="" class="contact-list-link">
-              <div class="d-flex">
-                <div class="pos-relative">
-                  <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">
-                  <div class="contact-status-indicator bg-gray-500 bd-br-primary"></div>
-                </div>
-                <div class="contact-person">
-                  <p class="mg-b-0">Britanny Cevallos</p>
-                  <span class="tx-12 op-5 d-inline-block">Shiboygan Falls, WI</span>
-                </div>
-              </div><!-- d-flex -->
-            </a><!-- contact-list-link -->
+
             <a href="" class="contact-list-link">
               <div class="d-flex">
                 <div class="pos-relative">
@@ -608,11 +585,6 @@
               <div class="pd-10 bg-success wd-50 ht-60 tx-center d-flex align-items-center justify-content-center">
                 <i class="fa fa-file-word-o tx-28 tx-white"></i>
               </div>
-              <div class="media-body">
-                <p class="mg-b-0 tx-13">Secret_Document</p>
-                <p class="mg-b-0 tx-12 op-5">Word Document</p>
-                <p class="mg-b-0 tx-12 op-5">4.5mb</p>
-              </div><!-- media-body -->
               <a href="" class="more"><i class="icon ion-android-more-vertical tx-18"></i></a>
             </div><!-- media -->
           </div><!-- media-list -->
@@ -709,19 +681,105 @@
     <div class="br-mainpanel">
       <div class="br-pageheader pd-y-15 pd-l-20">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-          <a class="breadcrumb-item" href="index.html">Bracket</a>
-          <span class="breadcrumb-item active">Blank Page</span>
+          <a class="breadcrumb-item" href="index.html">Home</a>
+          <span class="breadcrumb-item active">Dashboard</span>
         </nav>
       </div><!-- br-pageheader -->
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">Blank Page (Default Layout)</h4>
-        <p class="mg-b-0">Introducing Bracket admin template, the most handsome admin template of all time.</p>
+        <h4 class="tx-gray-800 mg-b-5">Welcome back, {{ name }}!</h4>
+        <p class="mg-b-0"></p>
       </div>
 
       <div class="br-pagebody">
 
         <!-- start you own content here -->
-
+              <div class="col-lg-6">
+            <div class="card shadow-base bd-0">
+              <div class="card-header bg-transparent pd-20">
+                <h6 class="card-title tx-uppercase tx-12 mg-b-0">User Transaction History</h6>
+              </div><!-- card-header -->
+              <table class="table table-responsive mg-b-0 tx-12">
+                <thead>
+                  <tr class="tx-10">
+                    <th class="wd-10p pd-y-5">&nbsp;</th>
+                    <th class="pd-y-5">User</th>
+                    <th class="pd-y-5">Type</th>
+                    <th class="pd-y-5">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="pd-l-20">
+                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
+                    </td>
+                    <td>
+                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Mark K. Peters</a>
+                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                    </td>
+                    <td class="tx-12">
+                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Email verified
+                    </td>
+                    <td>Just Now</td>
+                  </tr>
+                  <tr>
+                    <td class="pd-l-20">
+                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
+                    </td>
+                    <td>
+                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Karmen F. Brown</a>
+                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                    </td>
+                    <td class="tx-12">
+                      <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Pending verification
+                    </td>
+                    <td>Apr 21, 2017 8:34am</td>
+                  </tr>
+                  <tr>
+                    <td class="pd-l-20">
+                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
+                    </td>
+                    <td>
+                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Gorgonio Magalpok</a>
+                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                    </td>
+                    <td class="tx-12">
+                      <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Purchased success
+                    </td>
+                    <td>Apr 10, 2017 4:40pm</td>
+                  </tr>
+                  <tr>
+                    <td class="pd-l-20">
+                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
+                    </td>
+                    <td>
+                      <a href="" class="tx-inverse tx-14 tx-medium d-block">Ariel T. Hall</a>
+                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                    </td>
+                    <td class="tx-12">
+                      <span class="square-8 bg-warning mg-r-5 rounded-circle"></span> Payment on hold
+                    </td>
+                    <td>Apr 02, 2017 6:45pm</td>
+                  </tr>
+                  <tr>
+                    <td class="pd-l-20">
+                      <img src="http://via.placeholder.com/280x280" class="wd-36 rounded-circle" alt="Image">
+                    </td>
+                    <td>
+                      <a href="" class="tx-inverse tx-14 tx-medium d-block">John L. Goulette</a>
+                      <span class="tx-11 d-block">TRANSID: 1234567890</span>
+                    </td>
+                    <td class="tx-12">
+                      <span class="square-8 bg-pink mg-r-5 rounded-circle"></span> Account deactivated
+                    </td>
+                    <td>Mar 30, 2017 10:30am</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card-footer tx-12 pd-y-15 bg-transparent">
+                <a href=""><i class="fa fa-angle-down mg-r-5"></i>View All Transaction History</a>
+              </div><!-- card-footer -->
+            </div><!-- card -->
+          </div><!-- col-6 -->
 
       </div><!-- br-pagebody -->
 

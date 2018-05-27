@@ -58,8 +58,8 @@ def dash_one():
     name = item['name'][0]
     search_item=request.args.get('q')
     query = es.search(index="crm-company", q=search_item)
-    for hit in query['hits']['hits']:
-        pprint.pprint(hit['_source'])
+    #for hit in query['hits']['hits']:
+        #pprint.pprint(hit['_source'])
     if (query['hits']['total']==0):
         return render_template('dashboard.html',list_of_search=None, name=name, username=name)
     else:
@@ -78,8 +78,8 @@ def searching():
 @login_required
 def submit_enquiry():
     if request.method == 'POST':
-        id = request.form.get('company_id_1')
-        comments = request.form.get('comment')
+        id = request.form['id']
+        comments = request.form['enquiry']
         print(id,comments)
         company = dynamodb.Table('CRM-company')
         response = company.get_item(
