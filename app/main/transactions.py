@@ -3,7 +3,7 @@ from . import transacted
 from flask_login import current_user,login_required
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import *
-import boto3,requests,pprint
+import boto3,requests,pprint,uuid
 
 # login to AWS
 session=boto3.Session()

@@ -3,7 +3,7 @@ from . import dash
 from flask_login import current_user,login_required
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import *
-import boto3,requests,pprint
+import boto3,uuid,requests,pprint
 
 # login to AWS
 session=boto3.Session()
@@ -78,9 +78,10 @@ def searching():
 @login_required
 def submit_enquiry():
     if request.method == 'POST':
-        id = request.form['id']
+        id = request.form['item']
         comments = request.form['enquiry']
         print(id,comments)
+        print(str(uuid.uuid4()))
         company = dynamodb.Table('CRM-company')
         response = company.get_item(
             Key={

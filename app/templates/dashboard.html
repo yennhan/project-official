@@ -570,12 +570,14 @@
       </div>
         <div class="pd-l-200">
         <div class="mg-t-50 mg-b-50 card bg-dark card-body pd-l-40 wd-800">
-<form  method="POST" action="{{ url_for('dash.searching') }}" >
-             <div class=" form-inline">
+<form  id="search_form" method="POST" action="{{ url_for('dash.searching') }}" >
+             <div class="form-inline">
           <input id="searchbox1" name="searchbox" type="text" class=" fa fa-search col-md-10 form-control" placeholder="Search for companies,items,things you need? Or send a enquiry">
            <div class="pd-l-0"></div> <button class="btn btn-primary pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Search</button>
              </div>
-</form></div></div>
+</form>
+        </div>
+        </div>
       <div class="br-pagebody">Results
        {% if list_of_search is not none %}
           <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
@@ -584,10 +586,6 @@
               <thead>
                 <tr class="bg-info">
                     <th class="wd-10p "><div class="tx-white">Company Name</div></th>
-                  <!--<th class="wd-15p">Company Industry</th>
-                  <th class="wd-20p">Company Type</th>
-                  <th class="wd-15p">Address</th>
-                  <th class="wd-10p">Listed Sales</th>-->
                 </tr>
               </thead>
               <tbody>

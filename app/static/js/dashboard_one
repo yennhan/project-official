@@ -43,10 +43,12 @@ $(function(){
 
 $(document).ready(function(){
     $("form").submit(function(event){
+    var test=$(this).attr('id');
+    if (test != 'search_form'){
      event.preventDefault();
         $.ajax({
             data:{
-                id: $("#company_"+$(this).attr('id')).val(),
+                item: $("#company_"+$(this).attr('id')).val(),
                 enquiry: $("#comment_"+$(this).attr('id')).val()
             },
             type : 'POST',
@@ -55,7 +57,7 @@ $(document).ready(function(){
         .done(function(data){
         });
     $("#modal_"+$(this).attr('id')).modal('hide');
-    $("#table_"+$(this).attr('id')).hide();
-    });
-    });
+    //$("#table_"+$(this).attr('id')).hide();
+    }});
+});
 
