@@ -57,6 +57,7 @@ def dash_one():
     )
     item = response['Item']
     name = item['name'][0]
+    the_company = item['company_id']
     search_item=request.args.get('q')
     query = es.search(index="crm-company", q=search_item)
     #for hit in query['hits']['hits']:
@@ -64,7 +65,7 @@ def dash_one():
     if (query['hits']['total']==0):
         return render_template('dashboard.html',list_of_search=None, name=name, username=name)
     else:
-        return render_template('dashboard.html', list_of_search=query, name=name, username=name)
+        return render_template('dashboard.html', list_of_search=query, name=name, username=name,comp_id=the_company)
 
 
 @dash.route('/search',methods=['GET','POST'])
@@ -89,12 +90,21 @@ def submit_enquiry():
         )
         item = response['Item']
         the_company=item['company_id']
+        comp = dynamodb.Table('CRM-company')
+        the_resp = comp.get_item(
+            Key={
+                'company_id': the_company
+            }
+        )
+        the_p = the_resp['Item']
+        comp_name=the_p['company_name']
         docs_table=dynamodb.Table('CRM-Docs')
         docs_table.put_item(
             Item={
                 'doc_id': str(uuid.uuid4()),
                 'company_id': id,
                 'sender_company_id': the_company,
+                'company_name':comp_name,
                 'comments':comments,
                 'requirements':"Initiate For Bidding "
             }

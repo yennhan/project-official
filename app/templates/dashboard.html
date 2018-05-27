@@ -426,11 +426,6 @@
               <div class="pd-10 bg-primary wd-50 ht-60 tx-center d-flex align-items-center justify-content-center">
                 <i class="fa fa-file-image-o tx-28 tx-white"></i>
               </div>
-              <div class="media-body">
-                <p class="mg-b-0 tx-13">IMG_43420</p>
-                <p class="mg-b-0 tx-12 op-5">JPG Image</p>
-                <p class="mg-b-0 tx-12 op-5">2.2mb</p>
-              </div><!-- media-body -->
               <a href="" class="more"><i class="icon ion-android-more-vertical tx-18"></i></a>
             </div><!-- media -->
             <div class="media mg-t-20">
@@ -448,11 +443,6 @@
               <div class="pd-10 bg-purple wd-50 ht-60 tx-center d-flex align-items-center justify-content-center">
                 <i class="fa fa-file-video-o tx-28 tx-white"></i>
               </div>
-              <div class="media-body">
-                <p class="mg-b-0 tx-13">VID_6545</p>
-                <p class="mg-b-0 tx-12 op-5">AVI Video</p>
-                <p class="mg-b-0 tx-12 op-5">14.8mb</p>
-              </div><!-- media-body -->
               <a href="" class="more"><i class="icon ion-android-more-vertical tx-18"></i></a>
             </div><!-- media -->
             <div class="media mg-t-20">
@@ -590,6 +580,7 @@
               </thead>
               <tbody>
                 {% for company in list_of_search['hits']['hits'] %}
+                {% if (comp_id != company['_source']['company_id'] ) %}
                 <tr id="table_form_{{ company['_source']['company_id'] }}" class="ht-200 wd-150">
                   <td>
                       <div class=" wd-180">
@@ -651,6 +642,7 @@
 
                   </td>
                 </tr>
+                {% endif %}
               {% endfor %}
                  </tbody>
             </table>
