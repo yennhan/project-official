@@ -579,6 +579,7 @@
                 </tr>
               </thead>
               <tbody>
+
                 {% for company in list_of_search['hits']['hits'] %}
                 {% if (comp_id != company['_source']['company_id'] ) %}
                 <tr id="table_form_{{ company['_source']['company_id'] }}" class="ht-200 wd-150">
