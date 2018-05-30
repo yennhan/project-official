@@ -5,7 +5,7 @@ from flask_login import current_user,login_required
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 from requests_aws4auth import *
 import boto3,uuid,requests,pprint
-
+from botocore.client import Config
 # login to AWS
 session=boto3.Session()
 credentials=session.get_credentials()
@@ -32,6 +32,21 @@ es=Elasticsearch(hosts=[{'host': "search-inventory-5ucv2n3ftxe7aqer4hh7gi7pha.ap
             )
 #res = es.search(index="crm-company", body={"query": {"match_all": {}}})
 
+def s3_setup(FILE_NAME):
+    ACCESS_KEY_ID = 'AKIAJDHZRCD5D5BB33XQ'
+    ACCESS_SECRET_KEY = '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'
+    bucket_name = 'one-identity-pdf-storage'
+
+    data = open(FILE_NAME, 'rb')
+    s3 = boto3.resource(
+        's3',
+        aws_access_key_id=ACCESS_KEY_ID,
+        aws_secret_access_key=ACCESS_SECRET_KEY,
+        config=Config(signature_version='s3v4')
+    )
+    # Image Uploaded
+    s3.Bucket(bucket_name).put_object(Key=FILE_NAME, Body=data, ContentType = " application/pdf",ACL='public-read')
+    print ("Done")
 
 @dash.route('/dashboard_login',methods=['GET','POST'])
 @login_required

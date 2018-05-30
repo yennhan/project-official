@@ -55,7 +55,7 @@ $(document).ready(function(){
             url  :"/submit_enquiry",
             contentType: false,
             cache: false,
-            processData: false,
+            processData: true,
             async: false
         })
         .done(function(data){

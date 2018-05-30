@@ -570,7 +570,7 @@
         </div>
       <div class="br-pagebody">Results
        {% if list_of_search is not none %}
-          <button class="pull-right btn btn-success pd-x-10 pd-y-15 tx-uppercase tx-bold tx-spacing-6 tx-12" >Send Enquiry to All</button>
+          <button class="pull-right btn btn-success pd-x-5 pd-y-15 tx-karla tx-uppercase tx-bold tx-spacing-5 tx-12" >Send Enquiry to All</button>
 <div class="mg-r-120 pd-r-200">
     <table id="datatable2" class="table display responsive nowrap">
               <thead>
@@ -589,24 +589,24 @@
                       <div class="pd-l-10 pd-t-10 pd-r-10 pull-left "><b>Address:</b><p>{{ company['_source']['company_address'] }}</p></div>
                       </div>
                       <div class=" pd-l-20 mg-r-20">
-                      <div class="tx-primary pd-l-200 tx-poppins tx-24 tx-bold">{{ company['_source']['company_name'] }}
+                      <div class="tx-primary pd-l-200 tx-karla tx-30 tx-bold">{{ company['_source']['company_name'] }}
                       </div>
-                  <div class="pd-l-200 tx-black tx-bold"><u>Descriptions</u></div>
-                          <div class=" pd-b-5 pd-t-5 pd-l-30 wd-500 tx-poppins text-truncate text-left">
+                  <div class="pd-l-200 tx-25 tx-karla tx-black tx-bold"><u>Descriptions</u></div>
+                          <div class=" pd-b-5 pd-t-5 pd-l-30 wd-500 tx-karla text-truncate text-left">
                               {{ company['_source']['description'] }}
                           </div>
-                          <div class="pd-l-200 pd-b-5 tx-black"><u>Industry:</u></div>
+                          <div class="pd-l-200 pd-b-5 pd-t-5 tx-karla tx-black"><u>Industry:</u></div>
                           <div class="pd-b-5 pd-l-200">{{ company['_source']['company_industry'] }}</div>
-                           <div class="pd-l-200 pd-b-5 tx-black"><u>Type:</u></div>
+                           <div class="pd-l-200 pd-t-5 pd-b-5 tx-karla tx-black"><u>Type:</u></div>
                           <div class="pd-b-5 pd-l-200">{{ company['_source']['company_type'] }}</div>
-                          <div class="pd-l-200 tx-black tx-bold"><u>Items</u></div>
-                          <div class="pd-l-200 col-lg-8 pd-b-10">
+                          <div class="pd-l-200 pd-b-5 pd-t-5 tx-karla tx-black tx-bold"><u>Items</u></div>
+                          <div class="pd-l-200 col-lg-8 pd-b-10 tx-karla">
                               <input name="category_tags_value" value="{{ company['_source']['company_tags'] }}" data-role="tagsinput" disabled>
                           </div>
                       </div>
                       <div class="pull-right ">
                   <a class="pull-right btn btn-teal pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12"data-dismiss="modal" data-toggle="modal" data-target="#modal_form_{{ company['_source']['company_id'] }}">
-                      <font color="white"><u>Send Enquiry</u></font>
+                      <font class="tx-karla" color="white"><u>Send Enquiry</u></font>
                   </a>
               </div>
  <div id="modal_form_{{ company['_source']['company_id'] }}" class="modal fade">
@@ -615,21 +615,21 @@
                     <div class="modal-body  overflow-auto">
                         <div class="form-layout form-layout-1">
                              <form enctype="multipart/form-data" id="form_{{ company['_source']['company_id'] }}">
-                                 <h3 class="pd-b-20 form-signin-heading"><font color="black"><u>Enquiry Info</u></font> </h3>
+                                 <h3 class="tx-karla pd-b-20 form-signin-heading"><font color="black"><u>Enquiry Info</u></font> </h3>
                 <div class="pd-b-10 pd-r-20 form-group">
                     <label for="comment_form_{{ company['_source']['company_id'] }}">Specs/Details:</label>
                         <textarea  name="comment" class=" form-control" rows="6" cols="60" id="comment_form_{{ company['_source']['company_id'] }}" ></textarea>
                 </div>
-               <span class="control-fileupload">
-                   <label class="pd-r-20 tx-gray-700"><u>Upload Details/Measurements:</u></label>
+               <span class="tx-karla control-fileupload">
+                   <label class="tx-karla pd-r-20 tx-gray-700"><u>Upload Details/ Measurements:</u></label>
           <br/><input name="config_file" type="file" id="file_upload_form_{{ company['_source']['company_id'] }}">
         </span>
        <div class="form-group">
              <input id="company_form_{{ company['_source']['company_id'] }}" name="company_id_1" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
 </div>
-            <div class="form-layout-footer">
-                <button id="submit_query" name="submit_query" class="btn btn-info"  type="submit"><font color="black">Submit</font></button>
-                <button class="btn btn-secondary"type="button" data-dismiss="modal" ><font color="black">Cancel</font></button>
+            <div class=" tx-white tx-karla form-layout-footer">
+                <button id="submit_query" name="submit_query" class="btn btn-info" type="submit">Submit</button>
+                <button class="btn btn-secondary"type="button" data-dismiss="modal" >Cancel</button>
             </div><!-- form-layout-footer -->
           <!-- form-layout -->
                                  </form>
@@ -642,7 +642,7 @@
  <!-- modal-body -->
     <form id="view_profile" method="POST" action="{{ url_for('pro_company.profile_company') }}" >
                   <input id="comp_id_3" name="company_id" type="text" class=" fa fa-search col-md-10 form-control" value="{{ company['_source']['company_id'] }}"style="display:none">
-                  <button class=" pull-right btn bg-transparent pd-x-5 pd-y-10 tx-uppercase tx-bold tx-spacing-2 tx-12" ><u>View Profile</u></button>
+                  <button class=" pull-right btn bg-transparent pd-x-5 pd-y-10 tx-karla tx-uppercase tx-bold tx-spacing-2 tx-12" ><u>View Profile</u></button>
     </form>
 
                   </td>
