@@ -33,8 +33,8 @@ es=Elasticsearch(hosts=[{'host': "search-inventory-5ucv2n3ftxe7aqer4hh7gi7pha.ap
 #res = es.search(index="crm-company", body={"query": {"match_all": {}}})
 
 def s3_setup(FILE_NAME):
-    ACCESS_KEY_ID = 'AKIAJDHZRCD5D5BB33XQ'
-    ACCESS_SECRET_KEY = '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'
+    ACCESS_KEY_ID = 'A'
+    ACCESS_SECRET_KEY = '4'
     bucket_name = 'one-identity-pdf-storage'
 
     data = open(FILE_NAME, 'rb')
